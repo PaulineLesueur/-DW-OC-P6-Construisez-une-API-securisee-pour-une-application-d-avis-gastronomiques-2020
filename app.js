@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
+const authRoute = require('./routes/auth')
 const app = express();
 
 //connexion à la base de données MongoDB
@@ -11,7 +12,7 @@ mongoose.connect('mongodb+srv://Line:VPjPWFF3ycGvfTQk@cluster0.7otcv.mongodb.net
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
 
-  //déclaration des headers d'autorisation
+//déclaration des headers d'autorisation
 app.use((req, res, next) => { 
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
@@ -20,5 +21,7 @@ app.use((req, res, next) => {
 });
 
 app.use(bodyParser.json());
+
+app.use('/api/auth', authRoute);
 
 module.exports = app;
