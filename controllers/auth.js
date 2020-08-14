@@ -18,7 +18,7 @@ passwordValidity
 
 exports.signup = (req, res, next) => {
     if (!emailValidator.validate(req.body.email) || !passwordValidity.validate(req.body.password)) {
-        throw { error: "Vous devez fournir une adresse email et un mot de passe valide !" };
+        res.status(400).json({ message: 'Vous devez fournir une adresse email et un mot de passe valide !'});
     } else if (emailValidator.validate(req.body.email) && passwordValidity.validate(req.body.password)) {
         bcrypt.hash(req.body.password, 10)
         .then(hash => {
