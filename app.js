@@ -8,7 +8,9 @@ const helmet = require('helmet'); //global security plugin
 const authRoute = require('./routes/auth');
 const saucesRoute = require('./routes/sauces');
 
-mongoose.connect('mongodb+srv://Line:VPjPWFF3ycGvfTQk@cluster0.7otcv.mongodb.net/test?retryWrites=true&w=majority',
+require('dotenv').config(); //used to protect the informations of the mongoDB server
+
+mongoose.connect('mongodb+srv://'+process.env.LOGIN+':'+process.env.PASSWORD+'@'+process.env.URL,
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
