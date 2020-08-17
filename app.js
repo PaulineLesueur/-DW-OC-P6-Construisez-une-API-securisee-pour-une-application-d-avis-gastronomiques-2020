@@ -1,5 +1,5 @@
 const express = require('express');
-const bodyParser = require('body-parser'); //used to extract the informations of http request and make them usable
+const bodyParser = require('body-parser'); //used to extract the informations of http requests and make them usable
 const mongoose = require('mongoose'); //used to connect with the database
 const path = require('path'); //used to upload our images
 const xss = require('xss-clean'); //security plugin used to prevent users from inserting scripts or HTML on inputs
