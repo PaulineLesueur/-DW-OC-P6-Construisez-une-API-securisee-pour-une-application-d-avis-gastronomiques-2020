@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const validator = require('../middleware/sauce-validator');
+const validator = require('../middleware/sauce-validator'); //calls the sauce validation middleware
 
 const sauceSchema = mongoose.Schema ({
     userId: { type: String, required: true },

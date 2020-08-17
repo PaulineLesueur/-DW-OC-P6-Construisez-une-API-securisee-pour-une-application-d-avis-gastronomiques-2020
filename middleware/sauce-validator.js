@@ -1,53 +1,53 @@
 const validate = require('mongoose-validator');
 
-exports.nameValidator = [
+exports.nameValidator = [ //validation for the sauce name
     validate({
         validator: 'isLength',
         arguments: [3, 50],
-        message: 'Le nom de la sauce doit contenir entre 3 et 50 caractères',
+        message: "The sauce name has to be between 3 and 50 characters",
     }),
     validate({
         validator: 'matches',
         arguments: /^[a-zA-Z\s]+$/i,
-        message: "Le nom de votre sauce ne peut contenir que des lettres",
+        message: "You only can use letters to name your sauce",
     })
 ];
 
-exports.manufacturerValidator = [
+exports.manufacturerValidator = [ //validation for the manufacturer name
     validate({
         validator: 'isLength',
         arguments: [3, 30],
-        message: "Le nom du fabriquant de la sauce doit contenir entre 3 et 30 caractères",
+        message: "The manufacturer name has to be between 3 and 50 characters",
     }),
     validate({
         validator: 'matches',
         arguments: /^[a-zA-Z\-_\d\s]+$/i,
-        message: "Le nom du fabriquant de votre sauce ne peut contenir que des lettres et des chiffres",
+        message: "You only can use letters and numbers to name the manufacturer",
     })
 ];
 
-exports.descriptionValidator = [
+exports.descriptionValidator = [ //validation for the sauce description
     validate({
         validator: 'isLength',
         arguments: [3, 150],
-        message: "La description de la sauce doit contenir entre 10 et 150 caractères",
+        message: "The description has to be between 3 and 150 characters",
     }),
     validate({
         validator: 'matches',
         arguments: /^[a-zA-Z\d\s]+$/i,
-        message: "La description de votre sauce ne peut contenir que des lettres et des chiffres",
+        message: "You only can use letters and numbers for the sauce description",
     })
 ];
 
-exports.mainPepperValidator = [
+exports.mainPepperValidator = [ //validation for the main pepper
     validate({
         validator: 'isLength',
         arguments: [3, 20],
-        message: "Le nom de l'ingrédient principal de votre sauce doit contenir entre 3 et 20 caractères",
+        message: "The main pepper has to be between 3 and 20 characters",
     }),
     validate({
         validator: 'matches',
         arguments: /^[a-zA-Z\s]+$/i,
-        message: "Le nom de l'ingrédient principal de votre sauce ne peut contenir que des lettres",
+        message: "You only can use letters for the main pepper",
     })
 ];

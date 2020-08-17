@@ -1,17 +1,17 @@
-const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken'); //used to setup the token system
 
 module.exports = (req, res, next) => {
-    try {
-        const token = req.headers.authorization.split(' ')[1];
+    try { // if the user's token matches with the token we gave to him
+        const token = req.headers.authorization.split(' ')[1]; 
         const decodedToken = jwt.verify(token, 'RANDOM_SECRET_KEY');
         const userId = decodedToken.userId;
         if (req.body.userId && req.body.userId !== userId) {
-            throw 'Identifiant non valable !';
+            throw 'The userID is invalid';
         } else {
-            next();
+            next(); //then he can navigate the application
         }
     }
-    catch (error) {
-        res.status(401).json({ error: error | "Requête non authentifiée !"});
+    catch (error) { //if the token doesn't matches, the connection isn't authorized
+        res.status(401).json({ error: error | "Unauthorized access"});
     }
 };

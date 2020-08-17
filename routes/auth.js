@@ -3,10 +3,11 @@ const router = express.Router();
 const rateLimit = require('express-rate-limit');
 
 const authCtrl = require('../controllers/auth');
-const authLimit = rateLimit({
+
+const authLimit = rateLimit({ //used to prevent brute force attacks
     max: 3,
     windowMs: 5 * 60 * 1000,
-    message: "Nombre maximal d'essais atteint, merci de patienter 5 minutes avant de réessayer"
+    message: "You've sent to many requests (limited to 3), you've been blocked. Please, retry in 5 minutes."
 });
 
 router.post('/signup', authCtrl.signup);
